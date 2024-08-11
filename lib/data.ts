@@ -1,0 +1,72 @@
+export const foodDatabase = {
+  proteins: [
+    { name: "鸡胸肉", calories: 165, protein: 31, carbs: 0, fat: 3.6 },
+    { name: "鸡蛋", calories: 155, protein: 13, carbs: 1.1, fat: 11 },
+    { name: "瘦牛肉", calories: 250, protein: 26, carbs: 0, fat: 17 },
+    { name: "猪里脊", calories: 143, protein: 26, carbs: 0, fat: 3.5 },
+    { name: "豆腐", calories: 144, protein: 17, carbs: 3, fat: 8 },
+    { name: "三文鱼", calories: 208, protein: 20, carbs: 0, fat: 13 },
+    { name: "虾仁", calories: 99, protein: 24, carbs: 0.2, fat: 0.3 },
+    { name: "鲜鱼（如鲈鱼）", calories: 97, protein: 20, carbs: 0, fat: 1.3 },
+    { name: "猪肉馅", calories: 242, protein: 17, carbs: 0, fat: 20 },
+    { name: "牛奶", calories: 42, protein: 3.4, carbs: 5, fat: 1 },
+    { name: "酸奶", calories: 59, protein: 3.5, carbs: 4.7, fat: 3.3 },
+    { name: "豆浆", calories: 33, protein: 3.5, carbs: 2.8, fat: 1.8 }
+  ],
+  carbs: [
+    { name: "糙米", calories: 216, protein: 4.5, carbs: 45, fat: 1.6 },
+    { name: "全麦面包", calories: 247, protein: 13, carbs: 41, fat: 3.4 },
+    { name: "白米饭", calories: 130, protein: 2.7, carbs: 28, fat: 0.3 },
+    { name: "馒头", calories: 223, protein: 7, carbs: 46, fat: 1 },
+    { name: "面条（煮熟）", calories: 138, protein: 4.5, carbs: 25, fat: 2.1 },
+    { name: "燕麦片", calories: 389, protein: 16.9, carbs: 66, fat: 6.9 },
+    { name: "红薯", calories: 86, protein: 1.6, carbs: 20, fat: 0.1 },
+    { name: "玉米", calories: 86, protein: 3.2, carbs: 19, fat: 1.2 },
+    { name: "馄饨皮", calories: 256, protein: 8.2, carbs: 50, fat: 2.1 },
+    { name: "包子（肉馅）", calories: 217, protein: 9.3, carbs: 30, fat: 7 },
+    { name: "饺子（肉馅）", calories: 242, protein: 10, carbs: 28, fat: 11 },
+    { name: "葱油饼", calories: 389, protein: 6.7, carbs: 41, fat: 23 }
+  ],
+  fats: [
+    { name: "牛油果", calories: 320, protein: 4, carbs: 17, fat: 29 },
+    { name: "橄榄油", calories: 884, protein: 0, carbs: 0, fat: 100 },
+    { name: "花生", calories: 567, protein: 26, carbs: 16, fat: 49 },
+    { name: "核桃", calories: 654, protein: 15, carbs: 14, fat: 65 },
+    { name: "杏仁", calories: 579, protein: 21, carbs: 22, fat: 50 },
+    { name: "芝麻酱", calories: 595, protein: 17, carbs: 23, fat: 50 },
+    { name: "花生酱", calories: 588, protein: 25, carbs: 20, fat: 50 },
+    { name: "奶油", calories: 342, protein: 2, carbs: 1, fat: 37 },
+    { name: "黄油", calories: 717, protein: 0.9, carbs: 0.1, fat: 81 },
+    { name: "猪油", calories: 902, protein: 0, carbs: 0, fat: 100 },
+    { name: "葵花籽油", calories: 884, protein: 0, carbs: 0, fat: 100 },
+    { name: "腰果", calories: 553, protein: 18, carbs: 30, fat: 44 }
+  ],
+  vegetables: [
+    { name: "西兰花", calories: 55, protein: 3.7, carbs: 11.2, fat: 0.6 },
+    { name: "菠菜", calories: 23, protein: 2.9, carbs: 3.6, fat: 0.4 },
+    { name: "白菜", calories: 16, protein: 1.2, carbs: 3.2, fat: 0.2 },
+    { name: "青椒", calories: 20, protein: 0.9, carbs: 4.6, fat: 0.2 },
+    { name: "胡萝卜", calories: 41, protein: 0.9, carbs: 10, fat: 0.2 },
+    { name: "西红柿", calories: 18, protein: 0.9, carbs: 3.9, fat: 0.2 },
+    { name: "黄瓜", calories: 15, protein: 0.7, carbs: 3.6, fat: 0.1 },
+    { name: "茄子", calories: 25, protein: 1, carbs: 6, fat: 0.2 },
+    { name: "豆芽", calories: 30, protein: 3, carbs: 5.9, fat: 0.2 },
+    { name: "冬瓜", calories: 13, protein: 0.4, carbs: 3.2, fat: 0.1 },
+    { name: "莴笋", calories: 18, protein: 1.2, carbs: 3.8, fat: 0.2 },
+    { name: "蘑菇", calories: 22, protein: 3.1, carbs: 3.3, fat: 0.3 }
+  ],
+  fruits: [
+    { name: "苹果", calories: 52, protein: 0.3, carbs: 14, fat: 0.2 },
+    { name: "香蕉", calories: 89, protein: 1.1, carbs: 23, fat: 0.3 },
+    { name: "橙子", calories: 47, protein: 0.9, carbs: 12, fat: 0.1 },
+    { name: "葡萄", calories: 67, protein: 0.6, carbs: 17, fat: 0.4 },
+    { name: "西瓜", calories: 30, protein: 0.6, carbs: 7.6, fat: 0.2 },
+    { name: "梨", calories: 57, protein: 0.4, carbs: 15, fat: 0.1 },
+    { name: "桃子", calories: 39, protein: 0.9, carbs: 10, fat: 0.3 },
+    { name: "草莓", calories: 32, protein: 0.7, carbs: 7.7, fat: 0.3 },
+    { name: "柿子", calories: 70, protein: 0.6, carbs: 19, fat: 0.2 },
+    { name: "芒果", calories: 60, protein: 0.8, carbs: 15, fat: 0.4 },
+    { name: "猕猴桃", calories: 61, protein: 1.1, carbs: 15, fat: 0.5 },
+    { name: "火龙果", calories: 60, protein: 1.2, carbs: 13, fat: 0.4 }
+  ]
+};

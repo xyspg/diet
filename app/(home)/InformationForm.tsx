@@ -40,8 +40,16 @@ export default function Component() {
     })
     if (goal && age && height && weight && gender) {
       router.push("/start/configure")
+    } else {
+      toast({
+        title: "请填写所有信息",
+        variant: "destructive"
+      });
     }
   }
+
+
+
   return (
     <div className="relative flex-col items-start gap-8 flex">
       <form className="grid w-full items-start gap-6 shadow-md" onSubmit={handleSubmit}>
