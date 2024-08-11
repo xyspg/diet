@@ -1,12 +1,11 @@
 "use client"
 import HeroContent from "@/app/(home)/HeroContent";
 import {useHasMounted} from "@/lib/hooks";
-import {Loader} from "@/components/Loader";
 
 export default function Home() {
-  if (!useHasMounted()) return <Loader />
+  if (!useHasMounted()) return null
+
   return (
     <HeroContent />
   );
 }
-
