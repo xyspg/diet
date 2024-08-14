@@ -13,7 +13,7 @@ interface MealPlan {
   breakfast: Food[];
   lunch: Food[];
   dinner: Food[];
-  snacks: Food[];
+  others: Food[];
 }
 
 interface MealPlanState {

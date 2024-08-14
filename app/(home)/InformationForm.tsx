@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { useUserStore } from "@/store/UserStore";
 import {FormEvent, useEffect} from "react";
 import {toast} from "@/components/ui/use-toast";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Component() {
   const {

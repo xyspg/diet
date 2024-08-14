@@ -91,7 +91,7 @@ const MealPlanner = () => {
         ...selectFood("carbs", carbGrams * 0.3),
         ...selectFood("vegetables", 200),
       ],
-      snacks: [...selectFood("fats", fatGrams)],
+      others: [...selectFood("fats", fatGrams)],
     };
 
     // @ts-ignore

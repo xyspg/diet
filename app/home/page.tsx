@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import NutritionCard from "./NutritionCard";
 import { Button } from "@/components/ui/button";
