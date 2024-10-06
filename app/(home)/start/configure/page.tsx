@@ -5,6 +5,8 @@ import {Loader} from "@/components/Loader";
 import MealPlanner from "@/app/(home)/start/configure/MealPlanner";
 
 const Page = () => {
+  
+
   return (
     <div>
       <AnimatePresence>

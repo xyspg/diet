@@ -1,7 +1,8 @@
 "use client"
 
 import { Bar, BarChart, Label, Rectangle, ReferenceLine, XAxis } from "recharts"
-
+import { useMemo } from "react"
+import { useMealRecordsStore } from "@/store/MealRecordsStore"
 import {
   Card,
   CardContent,
@@ -9,20 +10,39 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components//ui/card"
+} from "@/components/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components//ui/chart"
+} from "@/components/ui/chart"
 
 export default function Component() {
+  const { records } = useMealRecordsStore()
+
+  const last7DaysData = useMemo(() => {
+    const today = new Date()
+    return Array.from({ length: 7 }, (_, i) => {
+      const date = new Date(today)
+      date.setDate(date.getDate() - i)
+      const dateString = date.toISOString().split('T')[0]
+      const record = records.find(r => r.date === dateString)
+      return {
+        date: dateString,
+        calories: record?.nutrition.calories || 0
+      }
+    }).reverse()
+  }, [records])
+
+  const todayCalories = last7DaysData[6]?.calories || 0
+  const averageCalories = Math.round(last7DaysData.reduce((sum, day) => sum + day.calories, 0) / 7)
+
   return (
     <Card className="lg:max-w-md">
       <CardHeader className="space-y-0 pb-2">
         <CardDescription>今天</CardDescription>
         <CardTitle className="text-4xl tabular-nums">
-          2,584{" "}
+          {Math.round(todayCalories)}{" "}
           <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
             Kcal
           </span>
@@ -31,7 +51,7 @@ export default function Component() {
       <CardContent>
         <ChartContainer
           config={{
-            steps: {
+            calories: {
               label: "Kcal",
               color: "hsl(var(--chart-1))",
             },
@@ -43,40 +63,11 @@ export default function Component() {
               left: -4,
               right: -4,
             }}
-            data={[
-              {
-                date: "2024-08-01",
-                steps: 2000,
-              },
-              {
-                date: "2024-08-02",
-                steps: 2100,
-              },
-              {
-                date: "2024-08-03",
-                steps: 2200,
-              },
-              {
-                date: "2024-08-04",
-                steps: 1300,
-              },
-              {
-                date: "2024-08-05",
-                steps: 1400,
-              },
-              {
-                date: "2024-08-06",
-                steps: 2500,
-              },
-              {
-                date: "2024-08-07",
-                steps: 1600,
-              },
-            ]}
+            data={last7DaysData}
           >
             <Bar
-              dataKey="steps"
-              fill="var(--color-steps)"
+              dataKey="calories"
+              fill="var(--color-calories)"
               radius={5}
               fillOpacity={0.6}
               activeBar={<Rectangle fillOpacity={0.8} />}
@@ -93,7 +84,6 @@ export default function Component() {
               }}
             />
             <ChartTooltip
-              defaultIndex={2}
               content={
                 <ChartTooltipContent
                   hideIndicator
@@ -109,7 +99,7 @@ export default function Component() {
               cursor={false}
             />
             <ReferenceLine
-              y={1200}
+              y={averageCalories}
               stroke="hsl(var(--muted-foreground))"
               strokeDasharray="3 3"
               strokeWidth={1}
@@ -122,7 +112,7 @@ export default function Component() {
               />
               <Label
                 position="insideTopLeft"
-                value="3,305"
+                value={averageCalories}
                 className="text-lg"
                 fill="hsl(var(--foreground))"
                 offset={10}
@@ -135,10 +125,10 @@ export default function Component() {
       <CardFooter className="flex-col items-start gap-1">
         <CardDescription>
           在过去 7 天，您日均摄入{" "}
-          <span className="font-medium text-foreground">3,305</span> Kcal.
+          <span className="font-medium text-foreground">{averageCalories}</span> Kcal.
         </CardDescription>
         <CardDescription>
-          您需要达到 <span className="font-medium text-foreground">2,584 Kcal</span>{" "}
+          您需要达到 <span className="font-medium text-foreground">{Math.round(todayCalories)} Kcal</span>{" "}
           来满足您的目标。
         </CardDescription>
       </CardFooter>

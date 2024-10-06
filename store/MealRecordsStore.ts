@@ -31,6 +31,7 @@ interface MealRecordsState {
   addRecord: (record: MealRecord) => void;
   getRecordByDate: (date: string) => MealRecord | undefined;
   updateRecord: (date: string, updatedRecord: MealRecord) => void;
+  getLast7DaysRecords: () => MealRecord[]; // New method
 }
 
 const calculateNutrition = (meals: Record<string, number>): Nutrition => {
@@ -93,6 +94,28 @@ export const useMealRecordsStore = create<MealRecordsState>()(
           )
         };
       }),
+      getLast7DaysRecords: () => {
+        const { records } = get();
+        const today = new Date();
+        const last7Days = Array.from({ length: 7 }, (_, i) => {
+          const date = new Date(today);
+          date.setDate(date.getDate() - i);
+          return date.toISOString().split('T')[0];
+        });
+
+        return last7Days.map(date => {
+          const record = records.find(r => r.date === date);
+          if (record) return record;
+          return {
+            date,
+            breakfast: {},
+            lunch: {},
+            dinner: {},
+            others: {},
+            nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0 }
+          };
+        }).reverse();
+      },
     }),
     {
       name: 'meal-records-storage',
